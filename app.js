@@ -6,6 +6,10 @@ function printMessage(username, badgeCount, points) {
     console.log(message);
 }
 
+function printError (clarifier, error) {
+    console.error(`${clarifier}: ${error.message}`)
+}
+
 function getProfile(username) {
     //connect to REST API  url
     try { //node API will throw error immediately (no handling) if there is a problem with the arguments passed in to the API (e.g. the .get() method), use try/catch to handle these node-specific errors
@@ -22,16 +26,16 @@ function getProfile(username) {
                     //print the data
                     printMessage(username, profile.badges.length, profile.points.JavaScript);
                 } catch (error) {
-                    console.error(`JSON Parsing error: ${error}`);
+                    printError('JSON Parsing Error', error);
                 }  
             });
         });
 
         request.on('error', error => {
-            console.error(`Problem with request: ${error.message}`);
+            printError('Problem With Reqest', error);
         });
     } catch(error) {
-        console.error(`Node.js error: ${error.message}`);
+        printError('Node.js Error', error);
     }
 }
 
