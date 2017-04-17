@@ -17,9 +17,13 @@ function getProfile(username) {
             });
             response.on('end', () => {
                 //parse the data
-                const profile = JSON.parse(body);
-                //print the data
-                printMessage(username, profile.badges.length, profile.points.JavaScript);
+                try {
+                    const profile = JSON.parse(body);
+                    //print the data
+                    printMessage(username, profile.badges.length, profile.points.JavaScript);
+                } catch (error) {
+                    console.error(`JSON Parsing error: ${error}`);
+                }  
             });
         });
 
