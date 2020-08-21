@@ -4,7 +4,7 @@ const print = require('./print');
 
 function get(username) {
   //connect to REST API  url
-  try { //node API will throw error immediately (no handling) if there is a problem with the arguments passed in to the API (e.g. the .get() method), use try/catch to handle these node-specific errors
+  try {
     const request = https.get(`https://teamtreehouse.com/${username}.json`, response => {
       if (response.statusCode === 200) {
         let body = "";
@@ -18,7 +18,7 @@ function get(username) {
           try {
             const profile = JSON.parse(body);
             print.message(username, profile.badges.length, profile.points.javaScript);
-          } catch (error) { //catch parsing errors
+          } catch (error) {
             print.error('JSON Parsing Error', error);
           }
         });
@@ -32,7 +32,10 @@ function get(username) {
     request.on('error', error => {
       print.error('Problem With Reqest', error);
     });
-
+    /* 
+      node API will throw error immediately (no handling) if there is a problem with the arguments passed in to the API
+      (e.g. the .get() method) -- use try/catch to handle these node-specific errors
+    */
   } catch (error) {
     print.error('Node.js Error', error);
   }
