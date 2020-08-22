@@ -1,0 +1,31 @@
+{
+  "name": "profile-get-v2",
+  "version": "0.0.1",
+  "description": "A simple command line application to retrieve treehouse profile info.",
+  "main": "app.js",
+  "dependencies": {
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdanmo/treehouse-profile-get.git"
+  },
+  "keywords": [
+    "treehouse",
+    "profile",
+    "get",
+    "node",
+    "javascript"
+  ],
+  "author": "Brendan Moran",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdanmo/treehouse-profile-get/issues"
+  },
+  "homepage": "https://github.com/bdanmo/treehouse-profile-get#readme",
+  "type": "module"
+}
